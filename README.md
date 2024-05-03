@@ -72,6 +72,30 @@ IAM Role (terraform)
 Once user is created and added to the group, I generated access keys (Access Key ID and Secret Access Key) for the IAM user  to authenticate programmatic access. Make sure that you have installed the `awc cli`.
 - Open the terminal and set your profile 
 
-```aws configure --profile <profile_name>
+```bash
+aws configure --profile <profile_name>
 ```
 As soon as you run this command, ou will be prompted to enter your `AWS Access Key ID`, `Secret Access Key`, `default region`, and `default output format`. Once you have provided the required information, AWS CLI will create a profile named profile_name in the AWS CLI configuration file (~/.aws/config on Unix-based systems or %USERPROFILE%\.aws\config on Windows).
+
+
+# Terraform Backend Configuration
+Using a remote backend, such as Amazon S3 and DynamoDB, offers several advantages over a local backend when managing Terraform state:
+
+- Concurrency and Collaboration: 
+Remote backends allow multiple users or automation processes to work on the same Terraform configuration concurrently without risking conflicts or corruption of the state file
+
+- Durability and Availability:
+Amazon S3 provides highly durable and available storage while DynamoDB offers a highly available and scalable database for state locking, ensuring that only one user or process can modify the state at a time.
+
+- Security:
+Storing state files remotely in a managed service like S3 allows you to apply granular access controls using AWS IAM policies. You can restrict access to the state files based on IAM roles, users, or groups, enhancing security.
+DynamoDB provides built-in encryption at rest and integrates seamlessly with AWS IAM for access control.
+
+- Centralized Management:
+Using a remote backend centralizes the management of Terraform state files and locking mechanisms. You can configure and manage state storage and locking settings in a single location, making it easier to enforce consistency and compliance across environments.
+
+- Scalability:
+Remote backends like S3 and DynamoDB are designed to scale automatically to accommodate growing workloads and larger state files. This scalability ensures that Terraform can handle infrastructure deployments of any size or complexity.
+
+- Versioning and Auditing:
+With versioning enabled on the S3 bucket, you maintain a history of changes to the Terraform state files. This facilitates auditing, troubleshooting, and rollback of changes if necessary.
