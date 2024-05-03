@@ -50,16 +50,22 @@ The separation of `infrastructure-modules` and `infrastructure-live` repositorie
 
 
 # AWS Configuration
-For best practices, I've 
-- Created a dedicaed IAM Role with Admin Acces (terraform).
+*Following the best practices, I've created:*
+
+- **Dedicaed IAM Role with Admin Acces (terraform).**
+- **Policy from that role (AllowTerraform).**
+- **User group (team-iac) and attached the policy (AllowTerraform).**
+- **User (zeal) and added to user group (team-iac) which will automatically assume the role.**
+
+IAM Role (terraform)
 ![alt text](images/Role.png)
 
-- Created a policy from that role (AllowTerraform).
+- Policy (AllowTerraform)
 ![alt text](images/policy.png)
 
-- Created a user group (team-iac) and attached the policy (AllowTerraform).
+- User group (team-iac) .
 ![alt text](images/group.png)
 
-- Added  a user (zeal) to user group (team-iac) which will automatically assume the role.
+- User (zeal) 
 ![alt text](images/user.png)
 
