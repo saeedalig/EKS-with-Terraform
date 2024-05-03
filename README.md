@@ -36,6 +36,8 @@ This project consists of two separate Git repositories:
    - `dev/`: Directory containing Terraform configurations specific to the development environment.
    - `staging/`: Directory containing Terraform configurations specific to the staging environment.
    - `prod/`: Directory containing Terraform configurations specific to the production environment.
+
+   In the root of the infrastructure-live, there is a `terragrunt.hcl` file that would be used in each environments.
     
     **Within each environment directory:**
      - `terragrunt.hcl`: Terragrunt configuration file defining the Terraform configurations to be applied, including references to modules from the `infra-modules` repository.
@@ -45,3 +47,19 @@ This project consists of two separate Git repositories:
     ![alt text](images/infra-live.png)
 
 The separation of `infrastructure-modules` and `infrastructure-live` repositories allows for modularity, reusability, and versioning of Terraform configurations. Changes to infrastructure modules can be made independently and propagated to different deployments managed in the `infrastructure-live` repository.
+
+
+# AWS Configuration
+For best practices, I've 
+- Created a dedicaed IAM Role with Admin Acces (terraform).
+![alt text](images/Role.png)
+
+- Created a policy from that role (AllowTerraform).
+![alt text](images/policy.png)
+
+- Created a user group (team-iac) and attached the policy (AllowTerraform).
+![alt text](images/group.png)
+
+- Added  a user (zeal) to user group (team-iac) which will automatically assume the role.
+![alt text](images/user.png)
+
