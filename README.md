@@ -23,6 +23,10 @@ Before deploying the infrastructure, ensure you have the following prerequisites
 
 This project consists of two separate Git repositories:
 
+- [infrastructure-modules)](https://github.com/saeedalig/infrastructure-modules.git)  
+- [infrastructure-live)](https://github.com/saeedalig/infrastructure-live.git)  
+
+
 1. **infrastructure-modules**: This repository contains reusable Terraform modules for infrastructure components such as Amazon `EKS, VPC, Kubernetes-addons` and other resources. These modules encapsulate best practices and standard configurations for provisioning specific infrastructure resources.
 
    - `eks/`: Directory containing Terraform configurations and modules for setting up Amazon EKS clusters.
