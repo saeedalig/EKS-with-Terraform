@@ -87,15 +87,36 @@ Remote backends allow multiple users or automation processes to work on the same
 - Durability and Availability:
 Amazon S3 provides highly durable and available storage while DynamoDB offers a highly available and scalable database for state locking, ensuring that only one user or process can modify the state at a time.
 
-- Security:
+- **Security:**
 Storing state files remotely in a managed service like S3 allows you to apply granular access controls using AWS IAM policies. You can restrict access to the state files based on IAM roles, users, or groups, enhancing security.
 DynamoDB provides built-in encryption at rest and integrates seamlessly with AWS IAM for access control.
 
-- Centralized Management:
+- **Centralized Management:**
 Using a remote backend centralizes the management of Terraform state files and locking mechanisms. You can configure and manage state storage and locking settings in a single location, making it easier to enforce consistency and compliance across environments.
 
-- Scalability:
+- **Scalability:**
 Remote backends like S3 and DynamoDB are designed to scale automatically to accommodate growing workloads and larger state files. This scalability ensures that Terraform can handle infrastructure deployments of any size or complexity.
 
-- Versioning and Auditing:
+- **Versioning and Auditing:**
 With versioning enabled on the S3 bucket, you maintain a history of changes to the Terraform state files. This facilitates auditing, troubleshooting, and rollback of changes if necessary.
+
+
+
+# AWS Resources 
+
+
+**VPC:** A Virtual Private Cloud (VPC) in AWS provides a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. `EKS Cluster` will be created in this VPC and taht to in `private subnets` making it more secure.
+
+![alt text](images/eks-arch.png)
+
+- **IGW (Internet Gateway):** Internet Gateways enable communication between instances in your VPC and the internet, allowing resources within public subnets to connect to the internet.
+
+- **Subnets:** Subnets are segmented networks within a VPC, allowing you to partition your VPC's IP address range into multiple sub-ranges to distribute resources across different availability zones.
+
+- **NAT Gateway:** Network Address Translation (NAT) Gateway provides outbound internet access for instances in private subnets, allowing them to initiate outbound connections to the internet while remaining private.
+
+- **Elastic IP:** Elastic IP addresses are static IPv4 addresses designed for dynamic cloud computing. They are associated with your AWS account, allowing you to mask the failure of an instance or software by rapidly remapping the address to another instance.
+
+- **Route Tables:** Route Tables define the rules for routing traffic within a VPC. They determine how traffic is directed between subnets, internet gateways, virtual private gateways, and NAT gateways.
+
+
