@@ -50,7 +50,7 @@ The separation of `infrastructure-modules` and `infrastructure-live` repositorie
 
 
 # AWS Configuration
-*Following the best practices, I've created:*
+#### Following the best practices, I've created:
 
 - **Dedicaed IAM Role with Admin Acces (terraform).**
 - **Policy from that role (AllowTerraform).**
@@ -69,3 +69,9 @@ IAM Role (terraform)
 - User (zeal) 
 ![alt text](images/user.png)
 
+Once user is created and added to the group, I generated access keys (Access Key ID and Secret Access Key) for the IAM user  to authenticate programmatic access. Make sure that you have installed the `awc cli`.
+- Open the terminal and set your profile 
+
+```aws configure --profile <profile_name>
+```
+As soon as you run this command, ou will be prompted to enter your `AWS Access Key ID`, `Secret Access Key`, `default region`, and `default output format`. Once you have provided the required information, AWS CLI will create a profile named profile_name in the AWS CLI configuration file (~/.aws/config on Unix-based systems or %USERPROFILE%\.aws\config on Windows).
