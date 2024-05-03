@@ -108,7 +108,7 @@ With versioning enabled on the S3 bucket, you maintain a history of changes to t
 ## VPC: 
 A Virtual Private Cloud (VPC) in AWS provides a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define. `EKS Cluster` will be created in this VPC and taht to in `private subnets` making it more secure.
 
-    ![alt text](images/eks-arch.png)
+   ![alt text](images/eks-arch.png)
 
 - **IGW (Internet Gateway):** Internet Gateways enable communication between instances in your VPC and the internet, allowing resources within public subnets to connect to the internet.
 
